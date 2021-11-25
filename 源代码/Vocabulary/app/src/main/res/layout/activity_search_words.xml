@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffc">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="请输入单词或释义"
+            android:textAlignment="center"
+            android:focusedByDefault="false" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="搜索"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="以下内容来自词库"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/localRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="以下内容来自网络"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:paddingTop="100dp"
+            android:paddingBottom="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/netRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

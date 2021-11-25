@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="产品说明"
+        android:textSize="30sp"
+        android:paddingTop="15dp"
+        android:paddingBottom="20dp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="应用名称：单词本\n应用版本：beta测试版\n适用系统：Android 5.0以上\n开发者QQ：1342672105"
+        android:textAlignment="center" />
+
+</LinearLayout>

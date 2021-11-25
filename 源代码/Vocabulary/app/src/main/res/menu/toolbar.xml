@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/raw"
+        android:title="生词本"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/addWord"
+        android:title="自定义单词"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/help"
+        android:title="帮助"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/exit"
+        android:title="退出"
+        app:showAsAction="never" />
+
+</menu>

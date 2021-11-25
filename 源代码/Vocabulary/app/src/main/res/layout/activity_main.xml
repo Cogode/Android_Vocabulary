@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffc">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:hint="请输入单词或释义"
+            android:textAlignment="center"
+            android:focusedByDefault="false" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="搜索"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
