@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
-import android.net.MailTo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -60,24 +59,24 @@ public class MainActivity extends AppCompatActivity {
         intent = getIntent();
         Word word = (Word) intent.getSerializableExtra("word");
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            sentenceBtn = findViewById(R.id.sentence_btn);
+            sentenceBtn.setOnClickListener(view -> {
+                String q = ((TextView) ((View) view.getParent()).findViewById(R.id.wordSentence)).getText().toString().split("例句：")[1];
+                String langType = "en";
+                String appKey = "73b1fe362d1d8800";
+                String salt = String.valueOf(System.currentTimeMillis());
+                String sign = getDigest(appKey + q + salt + "JruZ6G2UgubkcaSfdSVL9GthEmW9BNf1");
+                String path = "https://openapi.youdao.com/ttsapi?q=" + q + "&langType=" + langType + "&appKey=" + appKey + "&salt=" + salt + "&sign=" + sign;
+                Uri uri = Uri.parse(path);
+                try {
+                    MediaPlayer.create(MainActivity.this, uri).start();
+                } catch(Exception e) {
+                    Toast.makeText(MainActivity.this, "播放失败", Toast.LENGTH_SHORT).show();
+                }
+            });
             if(word != null) {
                 WordContentFragment content = (WordContentFragment) getSupportFragmentManager().findFragmentById(R.id.wordContentFragment);
                 content.refresh(word);
-                sentenceBtn = findViewById(R.id.sentence_btn);
-                sentenceBtn.setOnClickListener(view -> {
-                    String q = ((TextView) ((View) view.getParent()).findViewById(R.id.wordSentence)).getText().toString().split("例句：")[1];
-                    String langType = "en";
-                    String appKey = "73b1fe362d1d8800";
-                    String salt = String.valueOf(System.currentTimeMillis());
-                    String sign = getDigest(appKey + q + salt + "JruZ6G2UgubkcaSfdSVL9GthEmW9BNf1");
-                    String path = "https://openapi.youdao.com/ttsapi?q=" + q + "&langType=" + langType + "&appKey=" + appKey + "&salt=" + salt + "&sign=" + sign;
-                    Uri uri = Uri.parse(path);
-                    try {
-                        MediaPlayer.create(MainActivity.this, uri).start();
-                    } catch(Exception e) {
-                        Toast.makeText(MainActivity.this, "播放失败", Toast.LENGTH_SHORT).show();
-                    }
-                });
                 sentenceBtn.setVisibility(View.VISIBLE);
             }
         }
