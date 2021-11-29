@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import java.io.Serializable;
-
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     private String createWordSQL = "create table Word (" +
                                     "name text primary key," +
