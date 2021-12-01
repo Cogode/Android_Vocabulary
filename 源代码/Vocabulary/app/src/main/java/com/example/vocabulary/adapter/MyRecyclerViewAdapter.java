@@ -45,7 +45,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         }
     }
 
-    public MyRecyclerViewAdapter(ArrayList<Word> words, OnItemClickListener itemClickListener, OnItemLongClickListener longClickListener, OnButtonClickListener buttonClickListener) {
+    public MyRecyclerViewAdapter(ArrayList<Word> words, OnItemClickListener itemClickListener,
+                                 OnItemLongClickListener longClickListener, OnButtonClickListener buttonClickListener) {
         this.words = words;
         this.itemClickListener = itemClickListener;
         this.longClickListener = longClickListener;

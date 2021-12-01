@@ -73,7 +73,7 @@ public class DBUtil {
     public static ArrayList<Word> searchWordsLikeInfo(MySQLiteOpenHelper dbHelper, String table, String info) {
         ArrayList<Word> words = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + table +" where name like ? or meaning like ? or sentence like ?",
+        Cursor cursor = db.rawQuery("select * from " + table + " where name like ? or meaning like ? or sentence like ?",
                 new String[] { "%" + info + "%", "%" + info + "%", "%" + info + "%" });
         try {
             if(cursor != null) {

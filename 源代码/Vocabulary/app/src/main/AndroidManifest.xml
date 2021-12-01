@@ -10,7 +10,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_config"
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vocabulary">

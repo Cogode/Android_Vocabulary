@@ -13,7 +13,6 @@ public class MyContentProvider extends ContentProvider {
     private static int RAW_DIR = 2;
     private static int RAW_ITEM = 3;
     private static String authority = "com.example.vocabulary.provider";
-    private MySQLiteOpenHelper dbHelper;
     private static UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -22,6 +21,7 @@ public class MyContentProvider extends ContentProvider {
         uriMatcher.addURI(authority, "RawWord", RAW_DIR);
         uriMatcher.addURI(authority, "RawWord/*", RAW_ITEM);
     }
+    private MySQLiteOpenHelper dbHelper;
 
     public MyContentProvider() {
     }
@@ -48,17 +48,27 @@ public class MyContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        if(uriMatcher.match(uri) == WORD_DIR)
+            db.insert("Word", null, values);
+        else if(uriMatcher.match(uri) == RAW_DIR)
+            db.insert("RawWord", null, values);
+        return null;
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return 0;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        if(uriMatcher.match(uri) == WORD_DIR || uriMatcher.match(uri) == WORD_ITEM)
+            return db.update("Word", values, selection, selectionArgs);
+        else if(uriMatcher.match(uri) == RAW_DIR || uriMatcher.match(uri) == RAW_ITEM)
+            return db.update("RawWord", values, selection, selectionArgs);
+        return 0;
     }
 
     @Override
