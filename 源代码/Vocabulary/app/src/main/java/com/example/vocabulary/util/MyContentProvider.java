@@ -58,6 +58,11 @@ public class MyContentProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        if(uriMatcher.match(uri) == WORD_DIR || uriMatcher.match(uri) == WORD_ITEM)
+            return db.delete("Word", selection, selectionArgs);
+        else if(uriMatcher.match(uri) == RAW_DIR || uriMatcher.match(uri) == RAW_ITEM)
+            return db.delete("RawWord", selection, selectionArgs);
         return 0;
     }
 
